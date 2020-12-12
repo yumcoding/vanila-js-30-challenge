@@ -1,0 +1,54 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-image: url("/images/bg-img2.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  font-family: sans-serif;
+}
+
+.keys {
+  min-height: 100vh;
+  display: flex;
+  /* flex: 1; */
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.key {
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  width: 10rem;
+  padding: 1rem 0.5rem;
+  border: 0.4rem solid #000;
+  border-radius: 0.5rem;
+  margin: 1rem;
+  font-size: 1.5rem;
+  text-align: center;
+  text-shadow: 0 0 0.5rem #000;
+  transition: all 0.07s ease;
+}
+
+.playing {
+  transform: scale(1.1);
+  border-color: #ffc600;
+  box-shadow: 0 0 1rem #ffc600;
+}
+
+kbd {
+  display: block;
+  font-size: 4rem;
+}
+
+.sound {
+  color: #ffc600;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
