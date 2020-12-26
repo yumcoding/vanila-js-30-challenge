@@ -59,23 +59,81 @@ const people = [
 
 // Array.prototype.filter()
 // 1. Filter the list of inventors for those who were born in the 1500's
+const fifteen = inventors.filter(
+  (inventor) => inventor.year >= 1500 && inventor.year < 1600
+);
+console.table(fifteen);
+
+//filter에서는 조건에 해당하는 array의 element만 남지만
+//map에서는 array의 element가 가공을 거쳐서 나가니까 array의 길이 그대로
 
 // Array.prototype.map()
 // 2. Give us an array of the inventors first and last names
+const nameList = inventors.map(
+  (inventor) => `${inventor.first}  ${inventor.last}`
+);
+console.log(nameList);
 
 // Array.prototype.sort()
 // 3. Sort the inventors by birthdate, oldest to youngest
+// const birthdayList = inventors.sort((a, b) => {
+//   if (a.year < b.year) {
+//     return -1;
+//   } else if (a.year > b.year) {
+//     return 1;
+//   }
+//   return 0;
+// });
+const birthdayList = inventors.sort((a, b) => (a.year > b.year ? 1 : -1));
+console.log(birthdayList);
+console.table(birthdayList);
 
 // Array.prototype.reduce()
 // 4. How many years did all the inventors live all together?
 
+// let totalYears = 0;
+// for (let i = 0; i < inventors.length; i++) {
+//   totalYears += inventors[i].passed - inventors[i].year;
+// }
+// console.log(totalYears);
+
+const total = inventors.reduce((sum, inventor) => {
+  return sum + (inventor.passed - inventor.year);
+}, 0);
+console.log(total);
+
 // 5. Sort the inventors by years lived
+const longLived = inventors.sort((a, b) =>
+  a.passed - a.year > b.passed - b.year ? -1 : 1
+);
+console.table(longLived);
 
 // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
 // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
+// const category = document.querySelector('.mw-category');
+// const links  = Array.from(category.querySelectorAll('a'));
+// const links = [...category.querySelectorAll('a')]
+// const result = links.map(link=>link.innerText).filter(name=>name.includes('de'));
+
 // 7. sort Exercise
 // Sort the people alphabetically by last name
+const alphabeticalList = inventors.sort((a, b) => (a.last > b.last ? 1 : -1));
+console.table(alphabeticalList);
+
+// const peopleList = people
+//   .map((person) => person.split(", "))
+//   .sort((a, b) => {
+//     const [aLast, aFirst] = a;
+//     const [bLast, bFirst] = b;
+//     return aLast > bLast ? 1 : -1;
+//   });
+const peopleList = people.sort((a, b) => {
+  const [aLast, aFirst] = a.split(", ");
+  const [bLast, bFirst] = b.split(", ");
+  return aLast > bLast ? 1 : -1;
+});
+console.log(peopleList);
 
 // 8. Reduce Exercise
 // Sum up the instances of each of these
@@ -95,3 +153,13 @@ const data = [
   "car",
   "truck",
 ];
+
+const sortedData = data.reduce((obj, item) => {
+  if (!obj[item]) {
+    obj[item] = 0;
+  }
+  obj[item]++;
+  return obj;
+}, {});
+
+console.log(sortedData);
