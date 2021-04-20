@@ -9,9 +9,10 @@ const handleCheck = e => {
   if(e.shiftKey && e.target.checked){
 
     checkboxes.forEach((checkbox)=>{
-
+      console.log(checkbox);
       if(checkbox === e.target || checkbox === lastChecked){
         inBetween = !inBetween;
+        console.log(inBetween);
       }
 
       if(inBetween){
@@ -22,6 +23,7 @@ const handleCheck = e => {
   }
 
   lastChecked = e.target;
+  console.log(lastChecked);
 }
 
 
